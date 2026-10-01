@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Baby ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="slide-shell">
+    <iframe class="slide-frame" name="slides" src="home.html" title="Our slides"></iframe>
+    <div class="music-player">
+        <button class="music-toggle" id="music-toggle" type="button" aria-label="Play music" aria-pressed="false">
+            <span class="music-toggle-icon" aria-hidden="true">▶</span>
+            <span class="music-toggle-label">Play Audio</span>
+        </button>
+        <audio id="background-audio" src="background-music.mp3" preload="auto"></audio>
+    </div>
+    <script>
+        const audioPlayer = document.getElementById("background-audio");
+        const musicToggle = document.getElementById("music-toggle");
+        const musicToggleIcon = musicToggle.querySelector(".music-toggle-icon");
+        const musicToggleLabel = musicToggle.querySelector(".music-toggle-label");
+
+        function updateMusicButton(isPlaying) {
+            musicToggleIcon.textContent = isPlaying ? "❚❚" : "▶";
+            musicToggleLabel.textContent = isPlaying ? "Pause Audio" : "Play Audio";
+            musicToggle.setAttribute("aria-label", isPlaying ? "Pause music" : "Play music");
+            musicToggle.setAttribute("aria-pressed", String(isPlaying));
+        }
+
+        musicToggle.addEventListener("click", async () => {
+            if (audioPlayer.paused) {
+                try {
+                    await audioPlayer.play();
+                } catch {
+                    updateMusicButton(false);
+                }
+            } else {
+                audioPlayer.pause();
+            }
+        });
+
+        audioPlayer.addEventListener("playing", () => updateMusicButton(true));
+        audioPlayer.addEventListener("pause", () => updateMusicButton(false));
+        audioPlayer.addEventListener("ended", () => updateMusicButton(false));
+        audioPlayer.addEventListener("error", () => {
+            musicToggleIcon.textContent = "!";
+            musicToggleLabel.textContent = "Audio unavailable";
+            musicToggle.setAttribute("aria-label", "Audio unavailable");
+            musicToggle.setAttribute("aria-pressed", "false");
+        });
+    </script>
+</body>
+</html>

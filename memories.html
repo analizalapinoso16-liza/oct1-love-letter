@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts" aria-hidden="true">
+        <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
+        <span>💗</span><span>❤️</span><span>💕</span><span>💞</span>
+    </div>
+
+    <main class="memories">
+        <p class="small-text">OUR LITTLE WORLD</p>
+        <h1>Our Memories 📸</h1>
+        <p class="memory-text">Different places, different days, but still us. ❤️</p>
+
+        <div class="gallery">
+            <div class="photo">
+                <button class="photo-view" type="button" aria-label="View photo: Us" data-caption="Us ❤️">
+                    <img src="f45a0f33-6721-474c-8d73-1665b9144b93.jpg" alt="Our memory">
+                </button>
+                <span class="photo-placeholder" aria-hidden="true" hidden>♡<small>A little piece of us</small></span>
+                <span>Us ❤️</span>
+            </div>
+            <div class="photo">
+                <button class="photo-view" type="button" aria-label="View photo: My favorite person" data-caption="My favorite person 💗">
+                    <img src="2babba98-69b6-4b0b-8e13-4343523f0bb8.jpg" alt="Our memory">
+                </button>
+                <span class="photo-placeholder" aria-hidden="true" hidden>♡<small>My favorite moment</small></span>
+                <span>My favorite person 💗</span>
+            </div>
+            <div class="photo">
+                <button class="photo-view" type="button" aria-label="View photo: My happy place" data-caption="My happy place 🥹">
+                    <img src="f2f4e388-74cc-43ec-a702-1cacf27a7a13.jpg" alt="Our memory">
+                </button>
+                <span class="photo-placeholder" aria-hidden="true" hidden>♡<small>My happy place</small></span>
+                <span>My happy place 🥹</span>
+            </div>
+            <div class="photo">
+                <button class="photo-view" type="button" aria-label="View photo: Always us" data-caption="Always us 💕">
+                    <img src="6d114da7-c4dc-4622-9747-cdec7e1051fc.jpg" alt="Our memory">
+                </button>
+                <span class="photo-placeholder" aria-hidden="true" hidden>♡<small>Always us</small></span>
+                <span>Always us 💕</span>
+            </div>
+        </div>
+
+        <nav class="page-links" aria-label="More pages">
+            <a class="button-primary" href="letter.html" target="slides">💌 Read my letter</a>
+            <a class="button-secondary" href="distance.html" target="slides">💗 A little love note</a>
+            <a class="button-secondary" href="home.html" target="slides">⌂ Home</a>
+        </nav>
+    </main>
+
+    <dialog class="photo-viewer" id="photo-viewer" aria-labelledby="photo-caption">
+        <div class="photo-viewer-heading">
+            <p id="photo-caption"></p>
+            <button class="photo-viewer-close" type="button" aria-label="Close photo">×</button>
+        </div>
+        <img class="photo-viewer-image" alt="">
+    </dialog>
+
+    <script>
+        const viewer = document.getElementById("photo-viewer");
+        const viewerImage = viewer.querySelector(".photo-viewer-image");
+        const viewerCaption = document.getElementById("photo-caption");
+
+        document.querySelectorAll(".photo-view").forEach((button) => {
+            const image = button.querySelector("img");
+
+            button.addEventListener("click", () => {
+                viewerImage.src = image.currentSrc || image.src;
+                viewerImage.alt = image.alt;
+                viewerCaption.textContent = button.dataset.caption;
+                viewer.showModal();
+            });
+
+            image.addEventListener("error", () => {
+                button.hidden = true;
+                button.nextElementSibling.hidden = false;
+            });
+        });
+
+        viewer.querySelector(".photo-viewer-close").addEventListener("click", () => viewer.close());
+        viewer.addEventListener("click", (event) => {
+            if (event.target === viewer) viewer.close();
+        });
+    </script>
+
+    <audio id="bgMusic" loop>
+</audio>
+
+<button id="musicButton" class="music-button">
+    🎵
+</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+const savedTime = localStorage.getItem("musicTime");
+const musicPlaying = localStorage.getItem("musicPlaying");
+
+if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+}
+
+musicButton.addEventListener("click", async () => {
+    if (music.paused) {
+        await music.play();
+        localStorage.setItem("musicPlaying", "true");
+        musicButton.textContent = "🎵";
+    } else {
+        music.pause();
+        localStorage.setItem("musicPlaying", "false");
+        musicButton.textContent = "🔇";
+    }
+});
+
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+}, 500);
+
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+if (musicPlaying === "true") {
+    music.play().catch(() => {
+        console.log("Waiting for user interaction.");
+    });
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Letter For You 💌</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FLOATING HEARTS -->
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💞</span>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+    <!-- LETTER -->
+    <main class="page-container">
+
+        <p class="date-text">OCTOBER 1, 2026</p>
+
+        <div class="letter-card">
+
+            <div class="tiny-heart">♡</div>
+
+            <h1>My Baby,</h1>
+
+            <p>
+                I honestly don't know how to explain my feelings anymore
+                because my love for you is so deep. Sometimes, I feel like
+                words are not enough to show you how much I really love you.
+            </p>
+
+            <p>
+                Being far from you is not easy. There are so many moments
+                when I just wish you were here with me. I want to hug you
+                so tight, kiss you, hold your hand, and just stay close to you.
+            </p>
+
+            <p>
+                I miss those little moments with you. I miss being close to
+                you. Sometimes, I just wish I could suddenly appear beside
+                you and give you the biggest hug.
+            </p>
+
+            <p>
+                Even though we are far from each other, my love for you
+                never feels far. I still think about you every day.
+                I still care about you every day.
+            </p>
+
+            <p>
+                The distance may be hard, but it will never change how much
+                I love you. I may not always know how to express my feelings,
+                but please know that I love you so, so much.
+            </p>
+
+            <div class="quote">
+                "Baby, I love you so much." ❤️
+            </div>
+
+            <p>
+                You are very special to me. More than I can explain with
+                words. I am thankful for every memory, every conversation,
+                every laugh, and every moment we have shared.
+            </p>
+
+            <p>
+                I really wish I could be with you right now and tell you
+                all of this face to face.
+            </p>
+
+            <p class="love-ending">
+                I love you more than words can say. 🥹❤️
+            </p>
+
+            <p class="signature">
+                Always yours,<br>
+                Your Baby ❤️
+            </p>
+
+        </div>
+
+        <a href="memories.html" class="love-button">
+            📸 See Our Memories
+        </a>
+
+    </main>
+
+</body>
+</html>
+</body>
+</html>

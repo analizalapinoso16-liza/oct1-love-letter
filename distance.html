@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Love Note ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts" aria-hidden="true">
+        <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
+        <span>💗</span><span>❤️</span><span>💕</span><span>💞</span>
+    </div>
+
+    <main class="distance">
+        <section class="distance-card">
+            <div class="big-heart">💗</div>
+            <p class="small-text">A LITTLE REMINDER</p>
+            <h1>Even From Far Away...</h1>
+            <p>You're still the person my heart looks for.</p>
+            <div class="line"></div>
+            <p>One day, the distance will only be a memory. Until then, I'll keep loving you from wherever I am.</p>
+            <div class="hearts-line">❤️ 💕 💗 💖 💞</div>
+
+            <nav class="page-links" aria-label="More pages">
+                <a class="button-primary" href="ending.html" target="slides">💖 One more thing...</a>
+                <a class="button-secondary" href="letter.html" target="slides">💌 Read my letter</a>
+                <a class="button-secondary" href="home.html" target="slides">⌂ Home</a>
+            </nav>
+        </section>
+    </main>
+
+    <audio id="bgMusic" loop>
+</audio>
+
+<button id="musicButton" class="music-button">
+    🎵
+</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+const savedTime = localStorage.getItem("musicTime");
+const musicPlaying = localStorage.getItem("musicPlaying");
+
+if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+}
+
+musicButton.addEventListener("click", async () => {
+    if (music.paused) {
+        await music.play();
+        localStorage.setItem("musicPlaying", "true");
+        musicButton.textContent = "🎵";
+    } else {
+        music.pause();
+        localStorage.setItem("musicPlaying", "false");
+        musicButton.textContent = "🔇";
+    }
+});
+
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+}, 500);
+
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+if (musicPlaying === "true") {
+    music.play().catch(() => {
+        console.log("Waiting for user interaction.");
+    });
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even From Far Away 🌙</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="distance-page">
+
+    <!-- FLOATING HEARTS -->
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💞</span>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+    <main class="distance-content">
+
+        <div class="moon">🌙</div>
+
+        <p class="date-text">OUR LONG-DISTANCE LOVE</p>
+
+        <h1>Even From Far Away...</h1>
+
+        <div class="distance-card">
+
+            <p>
+                Sometimes, I hate the distance because I just want to be
+                beside you.
+            </p>
+
+            <p>
+                I want to see your face, hear your voice beside me,
+                hold your hand, and give you a big hug whenever I miss you.
+            </p>
+
+            <p>
+                There are days when I wish I could just teleport to you
+                instead of missing you from far away.
+            </p>
+
+            <div class="big-heart">
+                ❤️
+            </div>
+
+            <p>
+                But even with the distance between us, I still choose to
+                love you. I still think about you. I still care about you.
+            </p>
+
+            <p>
+                Maybe we cannot always be together physically,
+                but you are always close to my heart.
+            </p>
+
+            <p class="strong-message">
+                Distance separates us, but it cannot separate my love for you.
+            </p>
+
+        </div>
+
+        <p class="future-message">
+            Someday, I hope we won't have to say<br>
+            "I miss you from far away" anymore. 🥺
+        </p>
+
+        <a href="ending.html" class="love-button">
+            ❤️ One More Thing
+        </a>
+
+    </main>
+
+</body>
+</html>
+</body>
+</html>

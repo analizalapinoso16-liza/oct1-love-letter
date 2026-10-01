@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Always Us ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts" aria-hidden="true">
+        <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
+        <span>💗</span><span>❤️</span><span>💕</span><span>💞</span>
+    </div>
+
+    <main class="ending-page">
+        <div class="big-heart">❤️</div>
+        <p class="small-text">MY FAVORITE PERSON</p>
+        <h1>I Love You, Baby</h1>
+        <p>More than I know how to explain.</p>
+        <p class="forever">Always you. Always us. 💗</p>
+
+        <nav class="page-links" aria-label="More pages">
+            <a class="button-primary" href="home.html" target="slides">♡ Back to our beginning</a>
+            <a class="button-secondary" href="memories.html" target="slides">📸 Our memories</a>
+        </nav>
+    </main>
+
+    <audio id="bgMusic" loop>
+</audio>
+
+<button id="musicButton" class="music-button">
+    🎵
+</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+const savedTime = localStorage.getItem("musicTime");
+const musicPlaying = localStorage.getItem("musicPlaying");
+
+if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+}
+
+musicButton.addEventListener("click", async () => {
+    if (music.paused) {
+        await music.play();
+        localStorage.setItem("musicPlaying", "true");
+        musicButton.textContent = "🎵";
+    } else {
+        music.pause();
+        localStorage.setItem("musicPlaying", "false");
+        musicButton.textContent = "🔇";
+    }
+});
+
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+}, 500);
+
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+if (musicPlaying === "true") {
+    music.play().catch(() => {
+        console.log("Waiting for user interaction.");
+    });
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Always You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="ending-page">
+
+    <!-- FLOATING HEARTS -->
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💞</span>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+    <main class="final-content">
+
+        <div class="giant-heart">
+            ❤️
+        </div>
+
+        <p class="date-text">
+            THIS IS FOR YOU
+        </p>
+
+        <h1>I Love You, Baby.</h1>
+
+        <p class="final-text">
+            More than I know how to explain.
+        </p>
+
+        <p class="final-text">
+            More than these words can show.
+        </p>
+
+        <div class="final-message">
+
+            <p>
+                Thank you for being part of my life.
+            </p>
+
+            <p>
+                Thank you for every memory, every laugh,
+                every conversation, and every moment.
+            </p>
+
+            <p>
+                No matter how far we are,
+                a part of my heart will always be with you.
+            </p>
+
+            <p class="forever">
+                Always you. Always us. ❤️
+            </p>
+
+        </div>
+
+        <div class="heart-row">
+            💗 💕 ❤️ 💕 💗
+        </div>
+
+        <p class="last-line">
+            I love you sooooo much. 🥹❤️
+        </p>
+
+        <a href="home.html" target="slides" class="back-button">
+            ↻ Read It Again
+        </a>
+
+    </main>
+
+</body>
+</html>
+</body>
+</html>

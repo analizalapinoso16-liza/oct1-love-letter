@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Letter to You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts" aria-hidden="true">
+        <span>❤️</span><span>💗</span><span>💕</span><span>💖</span>
+        <span>💗</span><span>❤️</span><span>💕</span><span>💞</span>
+    </div>
+
+    <main class="letter">
+        <article class="paper">
+            <p class="date">October 1, 2026</p>
+            <h2>My Baby,</h2>
+
+            <p>I honestly don't know how to explain my feelings anymore because my love for you is so deep. Sometimes, I feel like words are not enough to show you how much I really love you.</p>
+            <p>Being far from you is not easy. There are so many moments when I just wish you were here with me. I want to hug you so tight, kiss you, hold your hand, and just stay close to you.</p>
+            <p>I miss those little moments with you. I miss being close to you. And sometimes, I just wish I could suddenly appear beside you and give you the biggest hug.</p>
+            <p>Even though we are far from each other, my love for you never feels far. I still think about you every day. I still care about you every day.</p>
+            <p>The distance may be hard, but it will never change how much I love you. I may not always know how to express my feelings, but please know that I love you so, so much.</p>
+            <p>You are very special to me, Baby. More than I can explain with words. 🥺❤️</p>
+            <p>I really wish I could be with you right now and tell you face to face:</p>
+
+            <div class="quote">"Baby, I love you so much." ❤️</div>
+
+            <p>Until we can finally be together again, I'll keep loving you from here. I'll keep choosing you, caring for you, and looking forward to the day when distance is no longer between us.</p>
+            <p class="ending">I love you more than words can say. 🥹❤️</p>
+            <p class="signature">Forever yours,<br>Your Baby ❤️</p>
+
+            <nav class="page-links" aria-label="More pages">
+                <a class="button-primary" href="distance.html" target="slides">💗 Send a little love</a>
+                <a class="button-secondary" href="memories.html" target="slides">📸 See our memories</a>
+                <a class="button-secondary" href="home.html" target="slides">⌂ Home</a>
+            </nav>
+        </article>
+    </main>
+
+    <audio id="bgMusic" loop>
+</audio>
+
+<button id="musicButton" class="music-button">
+    🎵
+</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicButton");
+
+const savedTime = localStorage.getItem("musicTime");
+const musicPlaying = localStorage.getItem("musicPlaying");
+
+if (savedTime) {
+    music.currentTime = parseFloat(savedTime);
+}
+
+musicButton.addEventListener("click", async () => {
+    if (music.paused) {
+        await music.play();
+        localStorage.setItem("musicPlaying", "true");
+        musicButton.textContent = "🎵";
+    } else {
+        music.pause();
+        localStorage.setItem("musicPlaying", "false");
+        musicButton.textContent = "🔇";
+    }
+});
+
+setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+}, 500);
+
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+if (musicPlaying === "true") {
+    music.play().catch(() => {
+        console.log("Waiting for user interaction.");
+    });
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Letter For You 💌</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FLOATING HEARTS -->
+    <div class="floating-hearts">
+        <span>❤️</span>
+        <span>💗</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💗</span>
+        <span>❤️</span>
+        <span>💕</span>
+        <span>💞</span>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="bgMusic" loop>
+    </audio>
+
+    <button class="music-button" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+    <!-- LETTER -->
+    <main class="page-container">
+
+        <p class="date-text">OCTOBER 1, 2026</p>
+
+        <div class="letter-card">
+
+            <div class="tiny-heart">♡</div>
+
+            <h1>My Baby,</h1>
+
+            <p>
+                I honestly don't know how to explain my feelings anymore
+                because my love for you is so deep. Sometimes, I feel like
+                words are not enough to show you how much I really love you.
+            </p>
+
+            <p>
+                Being far from you is not easy. There are so many moments
+                when I just wish you were here with me. I want to hug you
+                so tight, kiss you, hold your hand, and just stay close to you.
+            </p>
+
+            <p>
+                I miss those little moments with you. I miss being close to
+                you. Sometimes, I just wish I could suddenly appear beside
+                you and give you the biggest hug.
+            </p>
+
+            <p>
+                Even though we are far from each other, my love for you
+                never feels far. I still think about you every day.
+                I still care about you every day.
+            </p>
+
+            <p>
+                The distance may be hard, but it will never change how much
+                I love you. I may not always know how to express my feelings,
+                but please know that I love you so, so much.
+            </p>
+
+            <div class="quote">
+                "Baby, I love you so much." ❤️
+            </div>
+
+            <p>
+                You are very special to me. More than I can explain with
+                words. I am thankful for every memory, every conversation,
+                every laugh, and every moment we have shared.
+            </p>
+
+            <p>
+                I really wish I could be with you right now and tell you
+                all of this face to face.
+            </p>
+
+            <p class="love-ending">
+                I love you more than words can say. 🥹❤️
+            </p>
+
+            <p class="signature">
+                Always yours,<br>
+                Your Baby ❤️
+            </p>
+
+        </div>
+
+        <a href="memories.html" class="love-button">
+            📸 See Our Memories
+        </a>
+
+    </main>
+
+</body>
+</html>
+</body>
+</html>
